@@ -1,0 +1,20 @@
+#PARA EL ESCANEO INDIVIDUAL
+INSERT INTO reg_temp (id_vaca, fecha_registro) VALUES (1234,'2018-29-10') 
+
+#PARA FINALIZAR EL ESCANEO DIARIO
+INSERT INTO registros (fecha_registro,id_vaca)  SELECT DISTINCT fecha_registro,id_vaca from reg_temp;
+TRUNCATE TABLE reg_temp;
+
+#PARA OBTENER LOS REPORTES 
+SELECT DISTINCT fecha_registro FROM registros;
+
+#PARA GENERAR EL REPORTE SEGUN LA FECHA $fecha (variable que le pasa el boton al query)
+    #PARA TABLA DE VACAS QUE SE REGISTRARON
+    SELECT DISTINCT id_vaca, fecha_registro WHERE fecha_registro='$fecha'
+    #PARA TABLA DE VACAS FALTANTES
+    SELECT DISTINCT inventario.id_vaca,fecha_ingreso,fecha_nacimiento,raza FROM 
+    inventario LEFT JOIN (SELECT * FROM registros WHERE registros.fecha_registro='$fecha') AS T 
+    ON inventario.id_vaca=T.id_vaca WHERE T.id_vaca is NULL;
+
+
+#fecha yyyy-mm-dd

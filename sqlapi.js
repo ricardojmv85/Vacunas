@@ -15,7 +15,8 @@ const connection = mysql.createConnection({
   app.get("/:id", (req, res) => {
     const id = req.params.id
     var values="";
-    var arr = id.split(",")
+    console.log(id)
+    /*var arr = id.split(",")
     values+="("+arr[0]+",'2018-10-29')"
     if (arr.length>1){
         for (var i=1;i<arr.length;i++){
@@ -27,6 +28,7 @@ const connection = mysql.createConnection({
     connection.query(queryString, function (err, result) {
         if (err) throw err;
       });
+      */
   })
   app.listen(3003, () => {
     console.log("Server is up and listening on 3003...")

@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
     const id = req.params.id
     var values="";
     console.log(id)
+    res.send(id);
     /*var arr = id.split(",")
     values+="("+arr[0]+",'2018-10-29')"
     if (arr.length>1){

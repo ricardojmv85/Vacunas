@@ -32,8 +32,7 @@ const connection = mysql.createConnection({
     a=new Date();
     fecha=a.format("%Y-%m-%d,true");
     var values="";
-    console.log(id)
-    res.send(id);
+    console.log(id);
     /*var arr = id.split(",")
     values+="("+arr[0]+",'2018-10-29')"
     if (arr.length>1){
@@ -41,13 +40,12 @@ const connection = mysql.createConnection({
             values+=",("+arr[i]+",'2018-10-29')"
         }
     }
-    console.log(values); */   
-    if(fecha!=0){
+    console.log(values); */  
     const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUE ("+"'"+id+"'"+","+"'"+fecha+"'"+")";
     connection.query(queryString, function (err, result) {
         if (err) throw err;
       });
-    }  
+      
   })
     
   app.listen(3003, () => {

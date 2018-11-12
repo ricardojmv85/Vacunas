@@ -14,8 +14,23 @@ const connection = mysql.createConnection({
 
   app.get("/:id", (req, res) => {
     const id = req.params.id
+    Date.prototype.format=function(fstr,utc){
+        var that =this;
+        utc=utc ? 'getUTC':'get';
+        return fstr.replace(/%[YmdHMS]/g,function(m){
+            switch(m){
+                case '%Y':return that[utc+'FullYear']();
+                case '%m':m=1+that[utc+'Month']();break;
+                case '%d':m=1+that[utc+'Date']();break;
+                default :return m.slice(2);
+
+            }
+            return('0'+m).slice(-2);
+        })
+
+    }
     a=new Date();
-    a=a.format("%y-%m-%d,true");
+    a=a.format("%Y-%m-%d,true");
     var values="";
     console.log(id)
     res.send(id);

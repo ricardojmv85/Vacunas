@@ -42,12 +42,14 @@ const connection = mysql.createConnection({
         }
     }
     console.log(values); */   
+    if(fecha!=0){
     const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUE ("+"'"+id+"'"+","+"'"+fecha+"'"+")";
     connection.query(queryString, function (err, result) {
         if (err) throw err;
       });
-      
+    }  
   })
+    
   app.listen(3003, () => {
     console.log("Server is up and listening on 3003...")
   })

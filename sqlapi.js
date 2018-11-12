@@ -21,7 +21,7 @@ const connection = mysql.createConnection({
             switch(m){
                 case '%Y':return that[utc+'FullYear']();
                 case '%m':m=1+that[utc+'Month']();break;
-                case '%d':m=1+that[utc+'Date']();break;
+                case '%d':m=that[utc+'Date']();break;
                 default :return m.slice(2);
 
             }

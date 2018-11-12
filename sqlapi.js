@@ -30,7 +30,7 @@ const connection = mysql.createConnection({
 
     }
     a=new Date();
-    a=a.format("%Y-%m-%d,true");
+    fecha=a.format("%Y-%m-%d,true");
     var values="";
     console.log(id)
     res.send(id);
@@ -42,7 +42,7 @@ const connection = mysql.createConnection({
         }
     }
     console.log(values); */   
-    const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUE ("+"'"+id+"'"+","+"'"+a+"'"+")";
+    const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUE ("+"'"+id+"'"+","+"'"+fecha+"'"+")";
     connection.query(queryString, function (err, result) {
         if (err) throw err;
       });

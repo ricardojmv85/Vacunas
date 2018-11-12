@@ -25,7 +25,7 @@ const connection = mysql.createConnection({
                 default :return m.slice(2);
 
             }
-            return(m).slice(-2);
+            return(''+m).slice(-2);
         })
 
     }

@@ -14,6 +14,8 @@ const connection = mysql.createConnection({
 
   app.get("/:id", (req, res) => {
     const id = req.params.id
+    a=new Date();
+    a=a.format("%y-%m-%d,true");
     var values="";
     console.log(id)
     res.send(id);
@@ -24,12 +26,12 @@ const connection = mysql.createConnection({
             values+=",("+arr[i]+",'2018-10-29')"
         }
     }
-    console.log(values);    
-    const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUES"+values
+    console.log(values); */   
+    const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUES ("+"'"+id+"'"+","+"'"+a+"'"+")";
     connection.query(queryString, function (err, result) {
         if (err) throw err;
       });
-      */
+      
   })
   app.listen(3003, () => {
     console.log("Server is up and listening on 3003...")

@@ -42,7 +42,7 @@ const connection = mysql.createConnection({
         }
     }
     console.log(values); */   
-    const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUES ("+"'"+id+"'"+","+"'"+a+"'"+")";
+    const queryString = "INSERT INTO reg_temp (id_vaca, fecha_registro) VALUE ("+"'"+id+"'"+","+"'"+a+"'"+")";
     connection.query(queryString, function (err, result) {
         if (err) throw err;
       });
